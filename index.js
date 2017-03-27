@@ -40,7 +40,9 @@ function replaceCall(source, replace) {
 module.exports = function(source, map) {
     this.cacheable();
 
-    var query = this.query, replace;
+    var query = this.query || {}, replace;
+
+    query = query.replace || {};
 
     if (isObject(query) || isArray(query)) {
         replace = isObject(query) ? [query] : query;
